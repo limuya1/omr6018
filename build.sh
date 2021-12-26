@@ -97,6 +97,7 @@ if [ "$OMR_OPENWRT" = "default" ]; then
 		_get_repo "$OMR_TARGET/source" https://github.com/suyuan168/openwrt6018 "82b732ad4781ab550f2223997f3371aa4dee795f"
 		_get_repo feeds/packages https://github.com/openwrt/packages "b5132de5cf4f7d0562445cf3c65f9f1a4bcb1bbf"
 		_get_repo feeds/luci https://github.com/openwrt/luci "02398a33837d1fe8fd23d933ad7ac32025144805"
+	fi
 
 if [ -z "$OMR_FEED" ]; then
 	OMR_FEED=feeds/openmptcprouter
@@ -547,6 +548,9 @@ if [ "$OMR_KERNEL" = "5.14" ]; then
 	echo "Set to kernel 5.14 for ramips"
 	find target/linux/ipq806x -type f -name Makefile -exec sed -i 's%KERNEL_PATCHVER:=5.10%KERNEL_PATCHVER:=5.14%g' {} \;
 	echo "Done"
+	echo "Set to kernel 5.15 for 6018"
+	find target/linux/6018 -type f -name Makefile -exec sed -i 's%KERNEL_PATCHVER:=5.10%KERNEL_PATCHVER:=5.15%g' {} \;
+	echo "Done"
 	#rm -rf target/linux/generic/files/drivers/net/phy/b53
 	rm -f target/linux/bcm27xx/modules/sound.mk
 	echo "CONFIG_DEVEL=y" >> ".config"
@@ -585,9 +589,6 @@ if [ "$OMR_KERNEL" = "5.15" ]; then
 	echo "Done"
 	echo "Set to kernel 5.15 for ramips"
 	find target/linux/ipq806x -type f -name Makefile -exec sed -i 's%KERNEL_PATCHVER:=5.10%KERNEL_PATCHVER:=5.15%g' {} \;
-	echo "Done"
-	echo "Set to kernel 5.15 for 6018"
-	find target/linux/6018 -type f -name Makefile -exec sed -i 's%KERNEL_PATCHVER:=5.10%KERNEL_PATCHVER:=5.15%g' {} \;
 	echo "Done"
 	#rm -rf target/linux/generic/files/drivers/net/phy/b53
 	rm -f target/linux/bcm27xx/modules/sound.mk
