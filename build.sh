@@ -101,6 +101,9 @@ if [ "$OMR_OPENWRT" = "default" ]; then
 		_get_repo "$OMR_TARGET/source" https://github.com/suyuan168/openwrt618 "63ddac31ffb9470336425ea946d8da15811bdfab"
 		_get_repo feeds/packages https://github.com/openwrt/packages "master"
 		_get_repo feeds/luci https://github.com/openwrt/luci "master"
+		_get_repo feeds/routing https://git.openwrt.org/feed/routing.git
+		_get_repo feeds/telephony https://git.openwrt.org/feed/telephony.git
+		_get_repo feeds/nss_packages https://github.com/robimarko/nss-packages.git
 	else
 		_get_repo "$OMR_TARGET/source" https://github.com/openwrt/openwrt "8a6b1a8d29cbd62f005ba20998ca9c8048ff49fc"
 		_get_repo feeds/packages https://github.com/openwrt/packages "b5132de5cf4f7d0562445cf3c65f9f1a4bcb1bbf"
@@ -152,6 +155,9 @@ EOF
 cat > "$OMR_TARGET/source/feeds.conf" <<EOF
 src-link packages $(readlink -f feeds/packages)
 src-link luci $(readlink -f feeds/luci)
+src-link routing $(readlink -f feeds/routing)
+src-link telephony $(readlink -f feeds/telephony)
+src-link nss_packages $(readlink -f feeds/nss_packages)
 src-link openmptcprouter $(readlink -f "$OMR_FEED")
 EOF
 
