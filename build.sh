@@ -157,6 +157,7 @@ src-link packages $(readlink -f feeds/packages)
 src-link luci $(readlink -f feeds/luci)
 src-link routing $(readlink -f feeds/routing)
 src-link telephony $(readlink -f feeds/telephony)
+src-link nss_packages $(readlink -f feeds/nss_packages)
 src-link openmptcprouter $(readlink -f "$OMR_FEED")
 EOF
 
