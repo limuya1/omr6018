@@ -98,7 +98,7 @@ fi
 if [ "$OMR_OPENWRT" = "default" ]; then
 	if [ "$OMR_KERNEL" = "5.4" ]; then
 		# Use OpenWrt 21.02 for 5.4 kernel
-		_get_repo "$OMR_TARGET/source" https://github.com/suyuan168/openwrt618 "ipq807x-5.15-new-new"
+		_get_repo "$OMR_TARGET/source" https://github.com/suyuan168/openwrt618 "ipq807x-5.15"
 		_get_repo feeds/packages https://github.com/openwrt/packages "master"
 		_get_repo feeds/luci https://github.com/openwrt/luci "master"
 		_get_repo feeds/routing https://git.openwrt.org/feed/routing.git "master"
